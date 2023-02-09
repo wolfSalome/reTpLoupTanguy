@@ -57,8 +57,31 @@
     <script>
 
         const map = L.map('map').setView([51.505, -0.09], 13);
+        var depIcon = L.icon({
+            iconUrl: 'Icons/departure.png',
+            shadowUrl: '',
+
+            iconSize: [38, 50], // size of the icon
+            shadowSize: [50, 64], // size of the shadow
+            iconAnchor: [22, 50], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+
+        var arrIcon = L.icon({
+            iconUrl: 'Icons/arrival.png',
+            shadowUrl: '',
+
+            iconSize: [38, 50], // size of the icon
+            shadowSize: [50, 64], // size of the shadow
+            iconAnchor: [22, 50], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
         var departureMarker = L.marker([0, 0]).addTo(map);
+        departureMarker.setIcon(depIcon);
         var arrivalMarker = L.marker([0, 0]).addTo(map);
+        arrivalMarker.setIcon(arrIcon);
         var path;
         var clickState = 0;
 
@@ -95,11 +118,12 @@
                 case 0:
                     departureMarker.setLatLng(e.latlng);
                     arrivalMarker.setLatLng([0, 0]);
-                    document.getElementById('departureLat').textContent = e.latlng.toString();
+                    printAddress(document.getElementById('departureLat'), departureMarker);
                     break;
                 case 1:
+                    
                     arrivalMarker.setLatLng(e.latlng);
-                    document.getElementById('arrivalLat').textContent = e.latlng.toString();
+                    printAddress(document.getElementById('arrivalLat'), arrivalMarker);
                     printPath();
                     break;
                 case 2:
@@ -151,7 +175,20 @@
             L.geoJSON(jsonObj["geometry"]).addTo(map);*/
         }
 
-        
+        function printAddress(element, marker) {
+            url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + marker.getLatLng().lat.toString() + "&lon=" + marker.getLatLng().lng.toString();
+            console.log(url);
+            var x = fetch(url)
+                .then((response) => response.json())
+                .then((responseJSON) => {
+                    var completeAddress = responseJSON["address"];
+                    element.textContent = completeAddress["road"] + ", " + completeAddress["city"];
+
+                }).catch(function (error) {
+                    element.textContent = "Adresse non trouvée."
+                });;
+            
+        }
 
         map.on('click', onMapClick);
 
