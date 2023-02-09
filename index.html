@@ -16,11 +16,17 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
+    <script src="Geoportail/GpPluginLeaflet.js"></script>
+    <link rel="stylesheet" href="Geoportail/GpPluginLeaflet.css" />
+
+    <script data-key="CLEF" src="Geoportail/GpPluginLeaflet.js"></script>
+
     <style>
         html, body {
             height: 100%;
             margin: 0;
         }
+
         .leaflet-container {
             height: 100%;
             width: 100%;
@@ -35,16 +41,55 @@
 
 
 
-    <div id="map" style="width: 100vh; height: 70vh; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="https://tile.openstreetmap.org/13/4093/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(56px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4094/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(312px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4093/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(56px, 165px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4094/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(312px, 165px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4092/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-200px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4095/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(568px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4092/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-200px, 165px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4095/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(568px, 165px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="720" height="480" viewBox="-60 -40 720 480" style="transform: translate3d(-60px, -40px, 0px);"><g><path class="leaflet-interactive" stroke="red" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#f03" fill-opacity="0.5" fill-rule="evenodd" d="M141.20355555554852,171.94704600190744a42,42 0 1,0 84,0 a42,42 0 1,0 -84,0 "></path><path class="leaflet-interactive" stroke="#3388ff" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#3388ff" fill-opacity="0.2" fill-rule="evenodd" d="M358 163L474 219L550 153z"></path></g></svg></div><div class="leaflet-pane leaflet-shadow-pane"><img src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(300px, 247px, 0px);"></div><div class="leaflet-pane leaflet-marker-pane"><img src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="Marker" tabindex="0" role="button" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(300px, 247px, 0px); z-index: 247;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"><div class="leaflet-popup  leaflet-zoom-animated" style="opacity: 1; transform: translate3d(300px, 125px, 0px); bottom: -7px; left: -97px;"><div class="leaflet-popup-content-wrapper"><div class="leaflet-popup-content" style="width: 148px;">I am a standalone popup.</div></div><div class="leaflet-popup-tip-container"><div class="leaflet-popup-tip"></div></div><a class="leaflet-popup-close-button" role="button" aria-label="Close popup" href="#close"><span aria-hidden="true">×</span></a></div></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.04805e+06px, 697379px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div></div></div></div>
+    <div id="map" style="width: 100%; height: 70vh; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="https://tile.openstreetmap.org/13/4093/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(56px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4094/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(312px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4093/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(56px, 165px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4094/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(312px, 165px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4092/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-200px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4095/2723.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(568px, -91px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4092/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-200px, 165px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/13/4095/2724.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(568px, 165px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="720" height="480" viewBox="-60 -40 720 480" style="transform: translate3d(-60px, -40px, 0px);"><g><path class="leaflet-interactive" stroke="red" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#f03" fill-opacity="0.5" fill-rule="evenodd" d="M141.20355555554852,171.94704600190744a42,42 0 1,0 84,0 a42,42 0 1,0 -84,0 "></path><path class="leaflet-interactive" stroke="#3388ff" stroke-opacity="1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#3388ff" fill-opacity="0.2" fill-rule="evenodd" d="M358 163L474 219L550 153z"></path></g></svg></div><div class="leaflet-pane leaflet-shadow-pane"><img src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(300px, 247px, 0px);"></div><div class="leaflet-pane leaflet-marker-pane"><img src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon-2x.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="Marker" tabindex="0" role="button" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(300px, 247px, 0px); z-index: 247;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"><div class="leaflet-popup  leaflet-zoom-animated" style="opacity: 1; transform: translate3d(300px, 125px, 0px); bottom: -7px; left: -97px;"><div class="leaflet-popup-content-wrapper"><div class="leaflet-popup-content" style="width: 148px;">I am a standalone popup.</div></div><div class="leaflet-popup-tip-container"><div class="leaflet-popup-tip"></div></div><a class="leaflet-popup-close-button" role="button" aria-label="Close popup" href="#close"><span aria-hidden="true">×</span></a></div></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.04805e+06px, 697379px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div></div></div></div>
+    <div id="infos" style="width: 100%; height: 30vh; background-color: aqua; display: flex; justify-content: space-around;">
+        <h2>Infos:</h2>
+        <div id="infos-container">
+            <h3>Départ</h3>
+            <p id="departureLat"></p>
+        </div>
+        <div id="infos-container">
+            <h3>Arrivée</h3>
+            <p id="arrivalLat"></p>
+        </div>
+
+    </div>
     <script>
 
         const map = L.map('map').setView([51.505, -0.09], 13);
+        var depIcon = L.icon({
+            iconUrl: 'Icons/departure.png',
+            shadowUrl: '',
+
+            iconSize: [38, 50], // size of the icon
+            shadowSize: [50, 64], // size of the shadow
+            iconAnchor: [22, 50], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+
+        var arrIcon = L.icon({
+            iconUrl: 'Icons/arrival.png',
+            shadowUrl: '',
+
+            iconSize: [38, 50], // size of the icon
+            shadowSize: [50, 64], // size of the shadow
+            iconAnchor: [22, 50], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+        var departureMarker = L.marker([0, 0]).addTo(map);
+        departureMarker.setIcon(depIcon);
+        var arrivalMarker = L.marker([0, 0]).addTo(map);
+        arrivalMarker.setIcon(arrIcon);
+        var path;
+        var clickState = 0;
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-
+        /*
         const marker = L.marker([51.5, -0.09]).addTo(map)
             .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
 
@@ -60,18 +105,89 @@
             [51.503, -0.06],
             [51.51, -0.047]
         ]).addTo(map).bindPopup('I am a polygon.');
-
-
+        
+        */
         const popup = L.popup()
             .setLatLng([51.513, -0.09])
-            .setContent('I am a standalone popup.')
+            .setContent('bienvenue.')
             .openOn(map);
-
+        
         function onMapClick(e) {
-            popup
+            
+            switch (clickState) {
+                case 0:
+                    departureMarker.setLatLng(e.latlng);
+                    arrivalMarker.setLatLng([0, 0]);
+                    printAddress(document.getElementById('departureLat'), departureMarker);
+                    break;
+                case 1:
+                    
+                    arrivalMarker.setLatLng(e.latlng);
+                    printAddress(document.getElementById('arrivalLat'), arrivalMarker);
+                    printPath();
+                    break;
+                case 2:
+                    departureMarker.setLatLng([0, 0]);
+                    arrivalMarker.setLatLng([0, 0]);
+                    popup
+                        .setLatLng(e.latlng)
+                        .setContent(`Trajet réinitialisé`)
+                        .openOn(map);
+                    break;
+            }
+            /*popup
                 .setLatLng(e.latlng)
-                .setContent(`You clicked the map at ${e.latlng.toString()}`)
-                .openOn(map);
+                .setContent(`Point de départ définit`)
+                .openOn(map);*/
+            
+            clickState++;
+            if (clickState > 2)
+                clickState = 0;
+        }
+
+        function printPath()
+        {
+            var url = "https://wxs.ign.fr/calcul/geoportail/itineraire/rest/1.0.0/route?resource=bdtopo-osrm&start=" + departureMarker.getLatLng().lng.toString() + "," + departureMarker.getLatLng().lat.toString() + "&end=" + arrivalMarker.getLatLng().lng.toString() + "," + arrivalMarker.getLatLng().lat.toString();
+            var defaultUrl = "https://wxs.ign.fr/calcul/geoportail/itineraire/rest/1.0.0/route?resource=bdtopo-osrm&start=2.3017215728759766,48.81876120037664&end=2.324380874633789,48.8287067867079";
+            console.log(url);
+            var response = fetch(defaultUrl);
+
+            var x = fetch(url)
+                .then((response) => response.json())
+                .then((responseJSON) => {
+                    // do stuff with responseJSON here...
+                    console.log(responseJSON);
+                    if (path != null)
+                        path.remove();
+                    path = L.geoJSON(responseJSON["geometry"]).addTo(map)
+
+                }).catch(function (error) {
+                    popup
+                        .setLatLng(arrivalMarker.getLatLng())
+                        .setContent(`Calcul de l'itinéraire échoué`)
+                        .openOn(map);
+                });;
+            /*
+            console.log("RESPONSE " + response);
+            //var myLines = '{"resource":"bdtopo-osrm","resourceVersion":"2023-01-02","start":"45.084907,-12.672064","end":"45.084907,-12.672064","profile":"car","optimization":"fastest","geometry":{"coordinates":[[45.084907,-12.672064],[45.084907,-12.672064]],"type":"LineString"},"crs":"EPSG:4326","distanceUnit":"meter","timeUnit":"minute","bbox":[45.084907,-12.672064,45.084907,-12.672064],"distance":0,"duration":0,"constraints":[],"portions":[{"start":"45.084907,-12.672064","end":"45.084907,-12.672064","distance":0,"duration":0,"bbox":[45.084907,-12.672064,45.084907,-12.672064],"steps":[{"geometry":{"coordinates":[[45.084907,-12.672064],[45.084907,-12.672064]],"type":"LineString"},"attributes":{"name":{"nom_1_gauche":"","nom_1_droite":"","cpx_numero":"N1","cpx_toponyme":""}},"distance":0,"duration":0,"instruction":{"type":"depart"}},{"geometry":{"coordinates":[[45.084907,-12.672064],[45.084907,-12.672064]],"type":"LineString"},"attributes":{"name":{"nom_1_gauche":"","nom_1_droite":"","cpx_numero":"N1","cpx_toponyme":""}},"distance":0,"duration":0,"instruction":{"type":"arrive"}}]}]}';
+            var jsonObj = JSON.parse(response.toString());
+            console.log(jsonObj);
+            L.geoJSON(jsonObj["geometry"]).addTo(map);*/
+        }
+
+        function printAddress(element, marker) {
+            url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + marker.getLatLng().lat.toString() + "&lon=" + marker.getLatLng().lng.toString();
+            console.log(url);
+            var x = fetch(url)
+                .then((response) => response.json())
+                .then((responseJSON) => {
+                    var completeAddress = responseJSON["address"];
+                    element.textContent = completeAddress["road"] + ", " + completeAddress["city"];
+
+                }).catch(function (error) {
+                    element.textContent = "Adresse non trouvée."
+                });;
+            
         }
 
         map.on('click', onMapClick);
