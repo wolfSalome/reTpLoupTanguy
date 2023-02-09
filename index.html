@@ -16,11 +16,17 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="">
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
+    <script src="Geoportail/GpPluginLeaflet.js"></script>
+    <link rel="stylesheet" href="Geoportail/GpPluginLeaflet.css" />
+
+    <script data-key="CLEF" src="Geoportail/GpPluginLeaflet.js"></script>
+
     <style>
         html, body {
             height: 100%;
             margin: 0;
         }
+
         .leaflet-container {
             height: 100%;
             width: 100%;
@@ -53,6 +59,7 @@
         const map = L.map('map').setView([51.505, -0.09], 13);
         var departureMarker = L.marker([0, 0]).addTo(map);
         var arrivalMarker = L.marker([0, 0]).addTo(map);
+        var path;
         var clickState = 0;
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -93,6 +100,7 @@
                 case 1:
                     arrivalMarker.setLatLng(e.latlng);
                     document.getElementById('arrivalLat').textContent = e.latlng.toString();
+                    printPath();
                     break;
                 case 2:
                     departureMarker.setLatLng([0, 0]);
@@ -111,6 +119,36 @@
             clickState++;
             if (clickState > 2)
                 clickState = 0;
+        }
+
+        function printPath()
+        {
+            var url = "https://wxs.ign.fr/calcul/geoportail/itineraire/rest/1.0.0/route?resource=bdtopo-osrm&start=" + departureMarker.getLatLng().lng.toString() + "," + departureMarker.getLatLng().lat.toString() + "&end=" + arrivalMarker.getLatLng().lng.toString() + "," + arrivalMarker.getLatLng().lat.toString();
+            var defaultUrl = "https://wxs.ign.fr/calcul/geoportail/itineraire/rest/1.0.0/route?resource=bdtopo-osrm&start=2.3017215728759766,48.81876120037664&end=2.324380874633789,48.8287067867079";
+            console.log(url);
+            var response = fetch(defaultUrl);
+
+            var x = fetch(url)
+                .then((response) => response.json())
+                .then((responseJSON) => {
+                    // do stuff with responseJSON here...
+                    console.log(responseJSON);
+                    if (path != null)
+                        path.remove();
+                    path = L.geoJSON(responseJSON["geometry"]).addTo(map)
+
+                }).catch(function (error) {
+                    popup
+                        .setLatLng(arrivalMarker.getLatLng())
+                        .setContent(`Calcul de l'itinéraire échoué`)
+                        .openOn(map);
+                });;
+            /*
+            console.log("RESPONSE " + response);
+            //var myLines = '{"resource":"bdtopo-osrm","resourceVersion":"2023-01-02","start":"45.084907,-12.672064","end":"45.084907,-12.672064","profile":"car","optimization":"fastest","geometry":{"coordinates":[[45.084907,-12.672064],[45.084907,-12.672064]],"type":"LineString"},"crs":"EPSG:4326","distanceUnit":"meter","timeUnit":"minute","bbox":[45.084907,-12.672064,45.084907,-12.672064],"distance":0,"duration":0,"constraints":[],"portions":[{"start":"45.084907,-12.672064","end":"45.084907,-12.672064","distance":0,"duration":0,"bbox":[45.084907,-12.672064,45.084907,-12.672064],"steps":[{"geometry":{"coordinates":[[45.084907,-12.672064],[45.084907,-12.672064]],"type":"LineString"},"attributes":{"name":{"nom_1_gauche":"","nom_1_droite":"","cpx_numero":"N1","cpx_toponyme":""}},"distance":0,"duration":0,"instruction":{"type":"depart"}},{"geometry":{"coordinates":[[45.084907,-12.672064],[45.084907,-12.672064]],"type":"LineString"},"attributes":{"name":{"nom_1_gauche":"","nom_1_droite":"","cpx_numero":"N1","cpx_toponyme":""}},"distance":0,"duration":0,"instruction":{"type":"arrive"}}]}]}';
+            var jsonObj = JSON.parse(response.toString());
+            console.log(jsonObj);
+            L.geoJSON(jsonObj["geometry"]).addTo(map);*/
         }
 
         
